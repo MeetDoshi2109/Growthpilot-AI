@@ -1,0 +1,80 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "growthpilot-backend"
+version = "0.1.0"
+description = "PAYTM GROWTHPILOT AI — Backend API"
+requires-python = ">=3.11,<3.15"
+dependencies = [
+    # Web framework
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "python-multipart>=0.0.12",
+
+    # Database — SQLite (no Docker required)
+    "sqlalchemy[asyncio]>=2.0.36",
+    "alembic>=1.14.0",
+    "aiosqlite>=0.20.0",
+
+    # Pydantic & settings
+    "pydantic>=2.10.0",
+    "pydantic-settings>=2.6.0",
+    "pydantic[email]>=2.10.0",
+
+    # Auth
+    "argon2-cffi>=23.1.0",
+    "python-jose[cryptography]>=3.3.0",
+
+    # Data & ML
+    "pandas>=2.2.0",
+    "numpy>=2.1.0",
+    "scikit-learn>=1.6.0",
+    "statsmodels>=0.14.4",
+
+    # LLM — Gemini
+    "google-generativeai>=0.8.0",
+    "openai>=1.58.0",   # kept as optional fallback
+    "httpx>=0.28.0",
+
+    # Utilities
+    "python-dotenv>=1.0.1",
+    "faker>=33.0.0",
+    "structlog>=24.4.0",
+    "rich>=13.9.0",
+    "pytz>=2024.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+    "pytest-cov>=6.0.0",
+    "httpx>=0.28.0",
+    "ruff>=0.8.0",
+    "black>=24.10.0",
+    "mypy>=1.13.0",
+    "pre-commit>=4.0.0",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+select = ["E", "F", "I", "N", "W", "UP"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+ignore_missing_imports = true

@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "comment": "GrowthPilot AI — Frontend on Vercel, Backend on Railway/Render",
+  "framework": "nextjs",
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/.next",
+  "installCommand": "cd frontend && npm install",
+  "devCommand": "cd frontend && npm run dev",
+  "rewrites": [
+    {
+      "source": "/api/v1/:path*",
+      "destination": "https://YOUR_RAILWAY_URL/api/v1/:path*"
+    }
+  ],
+  "env": {
+    "NEXT_PUBLIC_SANDBOX": "true"
+  },
+  "buildEnv": {
+    "NEXT_PUBLIC_SANDBOX": "true"
+  }
+}

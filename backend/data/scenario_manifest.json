@@ -1,0 +1,53 @@
+{
+  "seed": 42,
+  "generated_at": "2026-09-18T21:02:17.785776+00:00",
+  "hero_merchant": {
+    "vertical": "tea_snacks",
+    "email": "rajesh@teaandsnacks.com",
+    "login_password": "demo1234"
+  },
+  "planted_scenarios": {
+    "dormant_cohort": {
+      "description": "Customers with no purchase > 2x their own cadence",
+      "target_count": 128,
+      "actual_planted": 128,
+      "typical_cadence_days": 11,
+      "detection_tolerance_pct": 15
+    },
+    "near_stockout_product": {
+      "description": "Masala Tea approaching stockout",
+      "product_name": "Masala Tea",
+      "quantity_on_hand": 37,
+      "avg_daily_demand": 9.2,
+      "expected_days_until_stockout": 4.0,
+      "detection_tolerance_days": 2
+    },
+    "overdue_payment_cluster": {
+      "description": "Overdue payments concentrated in chronic late payers",
+      "chronic_payer_count": 3,
+      "total_overdue_records": 10,
+      "total_overdue_paise": 828751,
+      "detection_tolerance_pct": 10
+    },
+    "revenue_dip": {
+      "description": "Mild revenue dip in last 14 days vs prior 14",
+      "driver": "repeat_customer_decline",
+      "expected_dip_pct": 8,
+      "detection_tolerance_pct": 5
+    },
+    "revenue_variability": {
+      "description": "High monthly revenue CV indicating financial readiness gap",
+      "expected_cv_gt": 0.25
+    },
+    "failed_payment_cluster": {
+      "description": "~8% failure rate in recent 30 days",
+      "expected_failure_rate_pct": 8,
+      "detection_tolerance_pct": 4
+    },
+    "anomaly_spike": {
+      "description": "One bulk order ~3x average AOV",
+      "spike_date": "2026-08-31",
+      "expected_multiplier_gt": 2.5
+    }
+  }
+}
